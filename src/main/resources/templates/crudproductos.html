@@ -1,0 +1,98 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="head"> 
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+    <title>Mantenimiento Productos</title>
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+
+<body>
+
+   <div id="contenedor" style="margin-left: 20%; width: 60%;">
+  
+   	<h2>Mantenimiento de productos</h2>
+   
+   <form th:action="@{/grabar}" method="post"  th:object="${alumno}" > 	
+
+	 <div class="form-group">
+		  <label for="codigo">Codigo del Alumno</label>
+		  <input type="text" class="form-control" id="codigo" placeholder="Ingrese codigo" th:field="*{codigoalu}" disabled=true>
+     </div>
+
+     <div class="form-group">
+		 <label for="nombre">Nombre</label>
+		 <input type="text"  class="form-control" id="nombre" placeholder="Ingrese nombre " th:field="*{nombre}">
+     </div>
+
+<!--   -->
+
+	<div class="form-row">
+		<div class	="form-group col-md-4">
+		    <label for="inputCity">Carreras</label>
+		    <select id="inputState"class="form-control" th:field="*{codigocar}">
+		        <option min="1"  th:value="-1" selected th:text="Seleccione"></option>
+		        <option th:each="c : ${lstcarrera}" th:value="${c.codigocar}" th:text="${c.carrera}">	   	    
+			 </select>
+		 </div>
+
+		 <div class	="form-group col-md-4">
+			 <label for="dni">DNI</label>
+			 <input type="number" min="11111111" max="99999999" class="form-control" id="dni" placeholder="Ingrese su dni" th:field="*{dni}">
+		</div>
+	</div>
+
+ <!--		 -->  
+
+	 <div class="form-row">
+		  <div class	="form-group col-md-4">
+			 <label for="email">Email</label>
+			 <input type="email" class="form-control" id="email" placeholder="Ingrese su email" th:field="*{email}">
+		</div>
+
+	</div>
+
+		 <button type="submit" class="btn btn-primary">Registrar</button>
+		<a href="/ReporteAlumnos" target="_blank" class="btn btn-primary">PDF </a>
+		<a href="/GraficoMatriculados" target="_blank" class="btn btn-primary">Grafico</a>
+		<br>
+		<br>
+		<br>
+		<div th:if="${mensaje}" th:text="${mensaje}" class="alert alert-danger" role="alert"></div>
+
+ </form>  
+</div>
+   
+  <footer>
+  	<!-- jQuery library -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<!-- Popper JS -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+		<!-- Latest compiled JavaScript -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </footer>
+ 
+</body>
+
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
